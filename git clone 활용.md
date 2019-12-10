@@ -1,6 +1,6 @@
-# git clone 활용
+# git `clone` 활용
 
-## 처음 clone 만들기
+## 처음 `clone` 만들기
 
 ```bash
 student@M160414 MINGW64 ~/Desktop/집
