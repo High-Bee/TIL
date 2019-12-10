@@ -106,6 +106,21 @@
 
    * **다른 파일을 수정 혹은 생성하세요!**
 
+   ```bash
+   $ touch master.txt
+   $ git add .
+   $ git commit -m 'Update master'
+   ```
+
+   ```bash
+   $ git log --oneline
+   ee70154 (HEAD -> master) Update master
+   de7c1cf test 기능 개발 완료
+   f653956 Testbranch -test
+   97871d5 (origin/master) 집 - main.html
+   c1e3b55 멀캠 - index.html
+   ```
+
    
 
 5. master에 병합
@@ -157,6 +172,10 @@ create mode 100644 signout.txt
    
 
 3. branch 삭제
+
+   ```bash
+   $ git branch -d feature/signout
+   ```
 
    
 
