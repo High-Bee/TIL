@@ -6,3 +6,4 @@ for artist in artists:
     webbrowser.open("https://search.naver.com/search.naver?query=" + artist)
     
 
+

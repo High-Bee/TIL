@@ -1,5 +1,6 @@
 import requests
 
+
 # 1. 요청 보내기
 # result = requests.get("https://www.naver.com")
 # print(result)
