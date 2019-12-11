@@ -15,6 +15,6 @@ d = int(input('과학: '))
 
 # 아래에 코드를 작성해 주세요.
 if a >= 90 and b > 80 and c > 85 and d >= 80:
-    print("True")
+    print(True)
 else:
-    ("False")
+    print(False)

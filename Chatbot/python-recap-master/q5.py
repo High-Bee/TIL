@@ -10,10 +10,18 @@ prices = input('물품 가격을 입력하세요: ')
 # 아래에 코드를 작성해 주세요.
 a = list(map(int, prices.split(";")))
 t = sorted(a)[::-1]
-a.arrange()
+
 print(a)
 for i in t:
     print(i)
     
-
+    
+# 강사님
+makes = prices.split(";")
+boxes = []
+for make in makes:
+    boxes.append(int(make))
+boxes.sort(reverse=True)
+for box in boxes:
+    print(box)
 
