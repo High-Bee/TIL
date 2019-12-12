@@ -16,12 +16,12 @@ for i in t:
     print(i)
     
     
-# 강사님
-makes = prices.split(";")
-boxes = []
-for make in makes:
-    boxes.append(int(make))
-boxes.sort(reverse=True)
-for box in boxes:
-    print(box)
+# # 강사님
+# makes = prices.split(";")
+# boxes = []
+# for make in makes:
+#     boxes.append(int(make))
+# boxes.sort(reverse=True)
+# for box in boxes:
+#     print(box)
 
