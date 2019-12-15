@@ -10,9 +10,6 @@
 # 20 10 35 30 7
 # 예제 출력 1 
 # 7 35
-<<<<<<< HEAD
-
-=======
 import sys
 n = int(input())
 
@@ -21,4 +18,3 @@ a = [sys.stdin.readline() for i in range(n)]
 
 
 print(a)
->>>>>>> refs/remotes/origin/master
