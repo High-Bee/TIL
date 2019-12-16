@@ -1,4 +1,6 @@
-Python Numpy
+# python Numpy
+
+
 
 > NumPy ( Numerical Python )
 >
@@ -180,5 +182,166 @@ ndarray의 len() : 12
 
  [[ 7  8  9]
   [10 11 12]]]
+```
+
+* ### numpy array의 type변경
+
+```python
+arr = np.array([1.1, 3.14, 2, 44.0, 3.99])
+print("dtype : {}".format(arr.dtype))
+print(arr)
+
+## ndarray의 데이터 타입을 다른형식으로 변경할 수 있다!
+int_arr = arr.astype(np.int32)
+print(int_arr) # 실수를 정수로 변환할 때 소수점 이하 버림처리
+```
+
+```text
+dtype : float64
+[ 1.1   3.14  2.   44.    3.99]
+[ 1  3  2 44  3]
+```
+
+* ### ndarray 만드는 여러가지 방법
+
+```python
+## arange (=range python에서 사용)
+arr = np.arange(0,10,2) # 0부터 9까지 2씩 증가
+arr = np.arange(10) # 0부터 9까지 단조증가
+arr = np.arange(0.1,5.3) # 0.1부터 5.3 불포함 1씩 증가
+
+print(arr)
+```
+
+```text
+[0.1 1.1 2.1 3.1 4.1 5.1]
+```
+
+```python
+## linspace
+## np.linspace(start, stop, num)
+## start부터 stop까지의 법위에서 num개를 균일한 간격으로 
+## 데이터를 생성하고 ndarray로 return
+
+arr = np.linspace(0,10,11)
+print(arr)
+
+arr = np.linspace(0,10,12)
+print(arr)
+
+arr = np.linspace(0,10,20)
+print(arr)
+
+## 눈으로 보기 힘드니 그래프로 보자!
+## chart를 그리는 대표적인 package가 있다 => matplotlib
+## conda install matplotlib
+
+import matplotlib.pyplot as plt
+
+plt.plot(arr)
+plt.show()
+```
+
+```tex
+[ 0.  1.  2.  3.  4.  5.  6.  7.  8.  9. 10.]
+[ 0.          0.90909091  1.81818182  2.72727273  3.63636364  4.54545455
+  5.45454545  6.36363636  7.27272727  8.18181818  9.09090909 10.        ]
+[ 0.          0.52631579  1.05263158  1.57894737  2.10526316  2.63157895
+  3.15789474  3.68421053  4.21052632  4.73684211  5.26315789  5.78947368
+  6.31578947  6.84210526  7.36842105  7.89473684  8.42105263  8.94736842
+  9.47368421 10.        ]
+
+```
+
+![img](numpy%20%EC%A0%95%EB%A6%AC/img.png)
+
+```python
+### 난수를 이용해서 ndarray를 생성하는 방법
+## 5가지 정도가 존재
+## np.random.nomal() : 난수를 생성해서 ndarray를 만들 수 있다.
+## ==> 정규분포 확률밀도에서 난수를 발생시킨다.
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+## 평균
+
+myMean = 50
+
+## 표준편차
+
+myStd = 2 
+
+arr = np.random.normal(myMean,myStd,(10000,))
+plt.hist(arr,bins=100)
+plt.show()
+```
+
+![img](numpy%20%EC%A0%95%EB%A6%AC/Mon,%2016%20Dec%202019%20233643.png)
+
+```python
+## 난수를 추출
+## [0,1) 구간에서 균등분포 활률밀도상에서 난수 추출 (0이상 1미만)
+
+arr = np.random.rand(1000)  # 3차원 1000개면 2개 행 3개 열
+                                # (1000) => 1차원, (2,3) => 2차원
+#print(arr)
+
+plt.hist(arr,bins=100)
+plt.show()
+```
+
+![img](numpy%20%EC%A0%95%EB%A6%AC/Mon,%2016%20Dec%202019%20233706.png)
+
+```python
+## 난수를 추출
+## 표준정규분포 확률밀도상에서 난수 추출
+arr = np.random.randn(100000) # 인자의 개수로 차원을 지정
+plt.hist(arr,bins=100)
+plt.show()
+```
+
+![img](numpy%20%EC%A0%95%EB%A6%AC/Mon,%2016%20Dec%202019%20233729.png)
+
+```python
+## 난수를 추출 (정수를 추출)
+## 주어진 범위에서 균등분포 확률밀도상에서 난수 추출
+
+arr = np.random.randint(-100,100,(100000,))
+plt.hist(arr,bins=100)
+plt.show()
+```
+
+![img](numpy%20%EC%A0%95%EB%A6%AC/Mon,%2016%20Dec%202019%20233750.png)
+
+```python
+## 난수를 추출 (실수를 추출)
+## [0,1)에서 균등분포 확률밀도상에서 난수 추출
+arr = np.random.random((10000,))  # shape을 줘야함
+                            
+#print(arr)
+
+plt.hist(arr,bins=100)
+plt.show()
+```
+
+![img](numpy%20%EC%A0%95%EB%A6%AC/Mon,%2016%20Dec%202019%20233808.png)
+
+```python
+## 난수는 랜덤값이기 때문에 실행할 때마다
+## 추출되는 난수가 달라져야 한다!
+## 난수값도 사실은 알고리즘에 의해서 계산되는 값이다.
+## 알고리즘에 초기값을 고정시키면 항상 같은 난수를 얻을 수 있다!!
+## 재현성
+np.random.seed(7) # seed값을 고정해서 random값을 바꾸지 않는다.
+arr = np.random.randint(0,10,(5,)) # 0부터 10사이, 1차원 5개 정수 추출
+                                   # 균등분포!
+    
+print(arr)
+
+```
+
+```text
+[4 9 6 3 3]
 ```
 
