@@ -11,10 +11,10 @@
 # 예제 출력 1 
 # 7 35
 import sys
-n = int(input())
+n = int(input("숫자를 입력하세요 : "))
 
-a = [sys.stdin.readline() for i in range(n)]
+a = list(map(int, sys.stdin.readline().split()))
+
+print(min(a), max(a))
 
 
-
-print(a)
