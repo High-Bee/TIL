@@ -11,6 +11,7 @@
 # 예제 출력 1 
 # 7 35
 import sys
+<<<<<<< HEAD
 # n = int(input())
 # a = [sys.stdin.readline() for i in range(n)]
 # a = [20, 10, 35, 30, 7]
@@ -40,3 +41,12 @@ print(min(a), max(a))
 # 예제 출력 1 
 # 85
 # 8
+=======
+n = int(input("숫자를 입력하세요 : "))
+
+a = list(map(int, sys.stdin.readline().split()))
+
+print(min(a), max(a))
+
+
+>>>>>>> 3ff7768fa73f51837494d5de2d5f382faab7f669
