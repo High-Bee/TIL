@@ -13,18 +13,17 @@
 import sys
 t = int(input())
 s = [sys.stdin.readline().split() for i in range(t)]
-t = []
+
 
 for i in s:
     k = list(map(str, i[1]))
-    
+    t = []
+    n = ""
     for j in k:
         t = j*int(i[0])
-        
-        print(t,end="")
+        n += t
+    print(n)
 
-
-        
 
 
 # for i in s:
