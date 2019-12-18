@@ -13,8 +13,18 @@
 import sys
 t = int(input())
 s = [sys.stdin.readline().split() for i in range(t)]
-print(s)
-print(s[0][0])
+t = []
+
+for i in s:
+    k = list(map(str, i[1]))
+    
+    for j in k:
+        t = j*int(i[0])
+        
+        print(t,end="")
+
+
+        
 
 
 # for i in s:
