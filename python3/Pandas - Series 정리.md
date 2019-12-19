@@ -150,3 +150,79 @@ dtype: int32
 22
 ```
 
+* ### For문을 활용한 List 생성해보기
+
+```python
+myList = [1,2,3,4]
+
+result = [x*2 for x in myList]
+print(result)
+
+result = [x*2 for x in myList if x > 2]
+print(result)
+
+# dict 에도 사용할 수 있다.
+
+result = {"stu"+str(x) : x**2 for x in range(0,10)}
+print(result)
+```
+
+```reStructuredText
+[2, 4, 6, 8]
+[6, 8]
+{'stu0': 0, 'stu1': 1, 'stu2': 4, 'stu3': 9, 'stu4': 16, 'stu5': 25, 'stu6': 36, 'stu7': 49, 'stu8': 64, 'stu9': 81}
+```
+
+* ### Series를 활용한 예제
+
+> A공장의 2019-01-01부터 10일간  제품 생샌량을  Series로 저장
+> 생산량은 랜덤으로 결정. 평균이 50이고 표준편차가 5인
+> 정규분포에서 random하게 추출(정수로)
+> 예) 2019-01-01 53 이런 형식
+>
+> B공장의 2019-01-01부터 10일간 제품생산량을 Series로 저장
+> 생산량은 랜덤으로 결정 평균이 70이고 표준편차가 8인
+> 정규분포에서 random하게 추출(정수)
+>
+> 모든공장의 날짜멸 생산량 (합계) 구하기
+
+```python
+today = parse("2019-01-01")
+day = timedelta(days=1)
+maDay = today+day
+result = [maDay for day in range(1,10)]
+arrA = np.random.normal(50,5,(10,))
+
+print(arrA)
+aFact = pd.Series(arrA,
+                     index = [today + timedelta(days=i) for i in range(10)])
+
+print(aFact)
+```
+
+```reStructuredText
+[44.8902773  48.2406229  47.37823364 40.40731753 52.89180003 48.49049076
+ 51.07521087 55.32518807 49.31124606 53.81910781]
+2019-01-01    44.890277
+2019-01-02    48.240623
+2019-01-03    47.378234
+2019-01-04    40.407318
+2019-01-05    52.891800
+2019-01-06    48.490491
+2019-01-07    51.075211
+2019-01-08    55.325188
+2019-01-09    49.311246
+2019-01-10    53.819108
+dtype: float64 <- "정수형이 아니다!!"
+```
+
+### A Factory 생산량
+
+```python
+start_day = parse("2019-01-01")
+aFactory = pd.Series([int(x) for x in np.random.normal(50,5,(10,))],
+                     index = [start_day + timedelta(days=i) for i in range(10)]) # int 형으로 입력받기 / random.randint로 정수를 받을 수 도 있다.
+
+
+```
+
