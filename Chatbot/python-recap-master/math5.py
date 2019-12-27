@@ -14,17 +14,25 @@
 # 1203
 # T = int(input())
 h,w,n = map(int, input().split())
-k = 100
-for i in range(h*w):
-    i += 1
-    k += 100
-    if k >= 600:
-        
-    if i == 12:
-        k += 100
-        k -= 12
+k = 0
+# for i in range(h*w):
+#     k += 100
+#     i += 1
+#     if k // 6 >= 100:
+#        k = k - 500 
+    
+
+#     if i == 12:
+#         k += 100
+#         k -= 12
                
     
-    if n == i:
-        print(k)
+#     if n == i:
+#         print(k)
     
+
+
+for i in range(w):
+    
+    for j in range(h):
+        
