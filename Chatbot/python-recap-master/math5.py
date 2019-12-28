@@ -12,27 +12,18 @@
 # 예제 출력 1 
 # 402
 # 1203
-# T = int(input())
-h,w,n = map(int, input().split())
-k = 0
-# for i in range(h*w):
-#     k += 100
-#     i += 1
-#     if k // 6 >= 100:
-#        k = k - 500 
-    
 
-#     if i == 12:
-#         k += 100
-#         k -= 12
-               
-    
-#     if n == i:
-#         print(k)
-    
-
-
-for i in range(w):
-    
-    for j in range(h):
-        
+tcase = int(input())
+for p in range(tcase):
+    h,w,n = map(int, input().split())
+    k = 0
+    t = 0
+    for i in range(1,w+1):
+        i = str(i).zfill(2)
+        for j in range(1,h+1):
+            j = str(j)
+            k= j+i
+            t += 1
+            if t == n:
+                print(int(k))
+                break
