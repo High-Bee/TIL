@@ -184,6 +184,43 @@ ndarray의 len() : 12
   [10 11 12]]]
 ```
 
+* ### numpy array의 다차원 변경
+
+```python
+# 2차원 배열 -> 1차원 배열로 변경
+arr = np.arange(12).reshape(3,4)
+                                    #array([[ 0,  1,  2,  3],
+                                    #       [ 4,  5,  6,  7],
+                                    #       [ 8,  9, 10, 11]])
+# 1. order="C" -> default
+arrC = np.ravel(arr, order="C")
+print("C :", arrC) # 행 순서대로 평평하게 배열
+
+# 2. order="F"
+arrF = np.ravel(arr, order="F")
+print("F :", arrF) # 열 순서대로 늘려서 배열
+
+# 3. order="K"
+arrK = np.ravel(arr, order="K")
+print("K :", arrK)
+```
+
+```reStructuredText
+C : [ 0  1  2  3  4  5  6  7  8  9 10 11]
+F : [ 0  4  8  1  5  9  2  6 10  3  7 11]
+K : [ 0  1  2  3  4  5  6  7  8  9 10 11]
+```
+
+```python
+# 3차원 배열 -> 1차원 배열로 변경
+arrr = np.arange(12).reshape(2, 3, 2).swapaxes(1, 2)
+arrr
+```
+
+[https://rfriend.tistory.com/349]
+
+
+
 * ### numpy array의 type변경
 
 ```python
