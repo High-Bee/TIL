@@ -155,34 +155,34 @@ myList = [1,2,3,4,5,6,7,8,9,10,11,12]
 # myList = [[1,2,3],[4,5,6]]
 arr = np.array(myList) # ndarray 생성
 print("ndarray의 차원의 수는 : {}".format(arr.ndim)) # 차원의 수
+## => ndarray의 차원의 수는 : 1
+
 print("ndarray의 shape : {}".format(arr.shape)) # 원소의 개수
-# ndarray의 차원에 상관없이 모든 요소의 개수
+## => ndarray의 shape : (12,)
+
 print("ndarray의 요소개수 : {}".format(arr.size)) # 요소의 개수
+## => ndarray의 요소개수 : 12
 
 # python의 len()함수는 ndarray에 대해 적용하면 
 # 1차원의 요소개수를 리턴
 print("ndarray의 len() : {}".format(len(arr))) # 1차원의 개수 ( 1차원이 2개 있는 것 )
+## => ndarray의 len() : 12
 
 # shpe을 변경할 수 있다!
 arr.shape = (2,2,3) # tuple 괄호 생략가능
 print(arr)
+## => [[[ 1  2  3]
+#	    [ 4  5  6]]
 
-## 이렇게 shape을 변경할 수 있는데
-## arr.shape을 직접 바꾸는 방식은 잘 사용되지 않는다.
-## 다른 방식이 있다! reshape() 함수를 이용한다.
+#		[[ 7  8  9]
+#		 [10 11 12]]]
+
+
+## 이렇게 shape을 변경할 수 있는데 잘 사용안한다.
+## 다른 방식이 있다! .reshape() 함수를 이용한다.
 ```
 
-```
-ndarray의 차원의 수는 : 1
-ndarray의 shape : (12,)
-ndarray의 요소개수 : 12
-ndarray의 len() : 12
-[[[ 1  2  3]
-  [ 4  5  6]]
 
- [[ 7  8  9]
-  [10 11 12]]]
-```
 
 * ### numpy array의 다차원 변경
 
@@ -192,32 +192,42 @@ arr = np.arange(12).reshape(3,4)
                                     #array([[ 0,  1,  2,  3],
                                     #       [ 4,  5,  6,  7],
                                     #       [ 8,  9, 10, 11]])
-# 1. order="C" -> default
+# 1. order="C" -> default 행 순서대로 평평하게 배열
 arrC = np.ravel(arr, order="C")
-print("C :", arrC) # 행 순서대로 평평하게 배열
+print("C :", arrC) 
+## => [ 0  1  2  3  4  5  6  7  8  9 10 11]
 
-# 2. order="F"
+# 2. order="F" -> 열 순서대로 늘려서 배열
 arrF = np.ravel(arr, order="F")
-print("F :", arrF) # 열 순서대로 늘려서 배열
+print("F :", arrF) 
+## => F : [ 0  4  8  1  5  9  2  6 10  3  7 11]
 
-# 3. order="K"
+# 3. order="K" -> 메모리 발생순서대로 인덱싱해서 배열
 arrK = np.ravel(arr, order="K")
 print("K :", arrK)
-```
-
-```reStructuredText
-C : [ 0  1  2  3  4  5  6  7  8  9 10 11]
-F : [ 0  4  8  1  5  9  2  6 10  3  7 11]
-K : [ 0  1  2  3  4  5  6  7  8  9 10 11]
+## => K : [ 0  1  2  3  4  5  6  7  8  9 10 11]
 ```
 
 ```python
 # 3차원 배열 -> 1차원 배열로 변경
-arrr = np.arange(12).reshape(2, 3, 2).swapaxes(1, 2)
-arrr
-```
+arrr = np.arange(12).reshape(2, 3, 2)
+                                        #array([[[ 0,  1],
+                                        #        [ 2,  3],
+                                        #        [ 4,  5]],
 
-[https://rfriend.tistory.com/349]
+                                        #       [[ 6,  7],
+                                        #        [ 8,  9],
+                                        #        [10, 11]]])
+# 1. order="C"
+arrrc = np.ravel(arrr, order="C")
+## => array([ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11])
+
+# 축이 바뀐 배열 평평하게 펴기
+arrr = np.arange(12).reshape(2, 3, 2).swapaxes(1, 2)
+# 2. order="K"
+arrrK = np.ravel(arrr, order="K")
+## => array([ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11])
+```
 
 
 
