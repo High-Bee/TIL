@@ -12,3 +12,30 @@ c = list(map(int, input().split()))
 n = [a[0],b[0],c[0]]
 t = [a[1],b[1],c[1]]
 k = 
+
+
+##############################브루트 포스
+T = int(input())
+tmp = [list(map(int, input().split())) for _ in range(T)]
+print(tmp)
+
+h = []
+w = []
+
+
+for i in tmp:
+    h.append(i[0])
+    w.append(i[1])
+    
+print(h, w)
+for _ in range(len(w)):
+    if h.index(max(h)) == w.index(max(w)):
+        print(h.index(max(h)))
+    
+    
+#     if h.index(max(h)) == w.index(max(w)):
+#         print("1등은 {}".format(h.index(max(h))))
+    
+# # 150 45
+# 165 55
+# 175 50
