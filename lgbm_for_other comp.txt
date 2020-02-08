@@ -1,0 +1,75 @@
+import lightgbm as lgbm
+import pandas as pd
+import numpy as np
+
+
+## data load
+df_origin = pd.read_csv("./data/train_idall_et10_row60_col3273_Delunique.csv")
+
+df_x = df_origin.copy()
+
+## test data load
+test_origin = pd.read_csv("./data/test_idall_et10_row60_col3273_Delunique.csv")
+
+test_x = test_origin.copy()
+x_test = test_x.iloc[:,1:]
+x_test.shape
+test_x.rename(columns = {'Unnamed: 0' : 'index'}, inplace = True)
+index = test_x["index"]
+test_x.head()
+
+
+
+
+# for sub data set
+submission = pd.DataFrame(data=preds)
+submission.index = index
+submission.index.name = 'id'
+submission = submission.sort_index()
+submission = submission.groupby('id').mean()
+submission.to_csv('./data/submission_LGBM_10_60초_1.csv', index=True)
+submission.head()
+
+
+
+## make train dataset 
+d_train = lgbm.Dataset(x_train, label=label)
+d_train
+
+
+
+### multiclassova
+### parameter adjust
+
+params = {'task': 'train',
+    'boosting_type': 'gbdt',
+    'objective': 'multiclass',
+    'num_class':198,
+    'metric': 'multi_logloss',
+          'is_training_metric': True,
+    'learning_rate': 0.01,
+          'metric_freq': 5,
+    'num_leaves': 35,
+         'max_depth':17,
+'feature_fraction': 0.9,
+'bagging_fraction': 0.8,
+'bagging_freq': 10,
+'verbose': 1}
+
+#     # 'feature_fraction': 0.4,
+#     # 'bagging_fraction': 0.6,
+#     # 'bagging_freq': 17
+
+
+
+### train activate
+%%time
+lgb_cv = lgbm.cv(params, d_train, num_boost_round=500, nfold=3, shuffle=True, stratified=True, verbose_eval=100, early_stopping_rounds=10)
+
+nround = lgb_cv['multi_logloss-mean'].index(np.min(lgb_cv['multi_logloss-mean']))
+print(nround)
+
+model = lgbm.train(params, d_train, num_boost_round=nround)
+
+
+
