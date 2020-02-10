@@ -1,5 +1,27 @@
 moon9342.github.io
 
+
+
+
+
+
+
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+from tensorflow.keras.optimizers import SGD
+from tensorflow.keras.utils import to_categorical
+from sklearn.preprocessing import MinMaxScaler
+import numpy as np
+import pandas as pd
+
+
+
+
+
+
+
+
+
 >>> from sklearn.linear_model import LogisticRegression
 >>> lr = LogisticRegression(solver='liblinear', multi_class='auto', 
 ...                         C=100.0, random_state=1)
