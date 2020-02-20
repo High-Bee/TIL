@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script> // javascript code 영역 - 함수정의 
+        //document.write("자바스크립트 코드 실행 --head 영역");
+        //document.getElementById('memo').innerHTML='hello'
+    </script>
+    <script>
+        window.addEventListener("load", function() {
+            //alert("load end");
+            var btn = document.getElementById("btn")
+            btn.addEventListener("click", function() {
+                var span = document.getElementById("num")
+                var num = parseInt(span.innerHTML);
+                span.innerHTML = num+1
+            }, false);
+            
+        }, false);
+    </script>
+</head>
+<body>
+    자바스크립트 데이터 타입은 string, number, boolean, object(객체와 배열), null, undefined
+    <br>   
+    <script> // javascript code 영역 - 실행 코드
+            //document.write("자바스크립트 코드 실행 --body 영역에 출력");         
+        var a = '100';
+        document.write(typeof(a)+"<br>");
+        var b = 100;
+        document.write(typeof(b)+"<br>");
+        var c = 0.5;
+        document.write(typeof(c)+"<br>");
+        var d = true;
+        document.write(typeof(d)+"<br>");
+        var e = []; // 배열
+        document.write(typeof(e)+"<br>");
+        var f = { };
+        document.write(typeof(f)+"<br>");
+        var g = new Object();
+        document.write(typeof(g)+"<br>");
+        document.write(typeof(h)+"<br>");
+        document.write(typeof(i)+"<br>");
+        var j = null;
+        document.write(typeof(j)+"<br>");
+
+        document.write("자바스크립트 연산자 : 산술, 비교, 논리 (|, &, ||, &&)")
+        document.write((a==b)+"<br>") //true 내부적으로 형변환을 해서 값 비교
+        document.write((a===b)+"<br>") // false 값과 타입 모두 비교하기 때문
+    </script>
+    
+</body>
+
+<body>
+    사용자로 부터 표준 입력 받는 방법 : prompt(), confirm()
+    <!-- <br>   
+    <script> // javascript code 영역 - 실행 코드
+    var input = window.prompt("1~100 사이의 정수 입력 : ", 0);
+    alert(typeof(input) + " " + input);
+
+    var num = parseInt(input)
+    alert(typeof(num)+" " + num)
+
+    var answer = window.confirm("game over?");
+    alert(typeof(answer)+ " " + answer)        
+    
+
+    var input1 = window.prompt("1~100 사이의 정수 입력 : ", 0);
+    var num = parseInt(input1)
+    if ((num % 2) == 0){
+        document.write(num + "짝수"+"<br>");
+    } else {
+        document.write(num + "홀수"+"<br>");
+    }
+
+    
+    
+    for (var i=2; i<10; i++){
+         for(var j=1; j<10; j++){
+            document.write(i+"x"+j+"="+(i*j)+" "+"  ");
+        } 
+        document.write("<br>");
+
+    }
+
+    </script> -->
+
+    이벤트 발생된 객체 (예. 버튼) - 이벤트 소스
+    이벤트 핸들러 - 이벤트 처리 (객체, 함수)
+    이벤트 소스.addEventListener("이벤트", 이벤트 핸들러, 이벤트 캡처링 여부(bool));
+
+
+
+    <body>
+    이벤트 처리<br>
+
+    Count : <span id = "num">0</span>
+    <button id = "btn"> push </button>
+
+    
+    <script>
+
+    </script>
+
+</body>
+
+    <!-- 
+    if(조건식) {
+        실행문장;
+    }
+    else {
+        실행문장;
+    }
+
+    다중 if
+    if(조건식) {
+        실행문장;
+    }
+    else if{
+        실행문장;
+    }
+    else if{
+        실행문장;
+    }
+    else if{
+        실행문장;
+    }
+    else {
+        실행문장;
+    }
+
+
+    for (var i=0; i<//10; i++){
+        실행문장
+    }
+    
+    while(조건) {
+        실행문장
+    }
+
+    입력받은 정수가 짝수 또는 홀수인지 출력(%)
+  -->
+</body>
+</html>
