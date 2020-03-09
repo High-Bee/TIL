@@ -23,5 +23,6 @@
 #     result = '0'*num + b
 #     print(f"#{rounds+1} {result}")
 
-b='47FE'
-print(format(int(b, 16),'b'))
+# b='47FE'
+# print(format(int(b, 16),'b'))
+print(4200//1000)
