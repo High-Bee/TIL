@@ -15,7 +15,7 @@ for i in range(-5,6):
 
 print()
 
-a = 0b47FE
+a = 0x47FE
 x = 0x01020304
 
 print('%d ='%a, end='')
