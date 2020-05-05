@@ -2,7 +2,7 @@ function submit () {
 	fetch('/submit', {
 		method: 'POST',
 		headers: {'Content-Type': 'application/json'},
-		body: JSON.stringify({ })
+		body: JSON.stringify({'n1':n1, 'n2':n2,'n3':n3,,'n4':n4,,'n5':n5})
 	})
 		.then(res => res.json())
 		.then(ret => { alert(ret)
